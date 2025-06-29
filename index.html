@@ -14,7 +14,8 @@
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            overflow: hidden; /* Hide scrollbars if content fits */
+            /* Removed overflow: hidden to allow scrolling on small screens */
+            /* Removed min-h-screen to allow body to size to content */
         }
         .font-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
@@ -22,17 +23,20 @@
         .text-shadow-lg {
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
         }
+        /* Ensure the app container can grow and center content, but allows scrolling */
+        #app-container {
+            min-height: 100vh; /* Ensure it takes at least full viewport height */
+            /* Using flex-grow on main content or p-4 and ensuring container doesn't force overflow hidden */
+            padding-top: 1rem; /* Add some top padding */
+            padding-bottom: 1rem; /* Add some bottom padding */
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400 p-4">
+<body class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400">
 
     <!-- Main container for the application -->
-    <div id="app-container" class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400 p-4 font-inter">
-        <!-- Title of the application -->
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-8 text-shadow-lg text-center">
-            Numbers & Hindi Words
-        </h1>
-
+    <!-- The min-h-screen is kept here to ensure centering when content is small, but allows content to push it larger -->
+    <div id="app-container" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400 p-4 font-inter">
         <!-- Card displaying the number and its Hindi word -->
         <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center space-y-6 max-w-xl w-full transform transition-all duration-300 hover:scale-105">
             <!-- Display the number -->
