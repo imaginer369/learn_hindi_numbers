@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numbers & Hindi Words</title>
-    <!-- Favicon for the browser tab (reverted to initial icon) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔢</text></svg>">
+    <!-- Favicon for the browser tab -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:#FFD700;stop-opacity:1' /><stop offset='100%' style='stop-color:#FFA500;stop-opacity:1' /></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(#grad)'/><text x='50%' y='60%' text-anchor='middle' dominant-baseline='middle' font-family='Inter, sans-serif' font-weight='bold' font-size='70' fill='white'>1</text></svg>">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts for Inter and Noto Sans Devanagari -->
@@ -16,8 +16,7 @@
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            /* Removed overflow: hidden to allow scrolling on small screens */
-            /* Removed min-h-screen to allow body to size to content */
+            /* Allow scrolling if content is taller than viewport */
         }
         .font-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
@@ -25,20 +24,18 @@
         .text-shadow-lg {
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
         }
-        /* Ensure the app container can grow and center content, but allows scrolling */
+        /* Ensure the app container takes full height and aligns content to the start (top) */
         #app-container {
             min-height: 100vh; /* Ensure it takes at least full viewport height */
-            /* Using flex-grow on main content or p-4 and ensuring container doesn't force overflow hidden */
-            padding-top: 1rem; /* Add some top padding */
-            padding-bottom: 1rem; /* Add some bottom padding */
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400">
+<!-- Removed justify-center from body to allow app-container to align to top -->
+<body class="flex flex-col items-center bg-gradient-to-br from-blue-300 to-purple-400">
 
     <!-- Main container for the application -->
-    <!-- The min-h-screen is kept here to ensure centering when content is small, but allows content to push it larger -->
-    <div id="app-container" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-300 to-purple-400 p-4 font-inter">
+    <!-- Changed justify-center to justify-start to move content to the top -->
+    <div id="app-container" class="flex flex-col items-center justify-start bg-gradient-to-br from-blue-300 to-purple-400 p-4 pt-12 font-inter">
         <!-- Card displaying the number and its Hindi word -->
         <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col items-center justify-center space-y-6 max-w-xl w-full transform transition-all duration-300 hover:scale-105">
             <!-- Display the number -->
